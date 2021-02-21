@@ -1,0 +1,8 @@
+-- Todo --
+
+CREATE TABLE IF NOT EXISTS todo (
+  id BIGSERIAL PRIMARY KEY,
+  task VARCHAR NOT NULL,
+  completed BOOLEAN,
+  user_id BIGINT NOT NULL
+);
