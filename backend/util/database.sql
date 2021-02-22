@@ -6,3 +6,12 @@ CREATE TABLE IF NOT EXISTS todo (
   completed BOOLEAN,
   user_id BIGINT NOT NULL
 );
+
+-- users -- 
+
+CREATE TABLE IF NOT EXISTS users (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100),
+  password VARCHAR NOT NULL
+);

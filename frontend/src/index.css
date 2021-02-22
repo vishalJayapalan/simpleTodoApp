@@ -1,6 +1,6 @@
-body {
-  margin: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+
 body,
 a,
 button,
@@ -15,6 +15,14 @@ textarea {
   line-height: 20px;
   font-weight: 400;
 }
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #f7f7f7;
+}
+
+/* REGISTER AND LOGIN */
 
 .register-container {
   width: 90%;
@@ -114,3 +122,91 @@ textarea {
     padding: 0.7em;
     cursor: pointer;
 }
+
+/* TASK */
+
+.task-page-container{
+  width: 90%;
+  max-width: 25em;
+  margin: auto;
+  padding-top: 6em;
+}
+
+.logo-container{
+  display: flex;
+  justify-content: center;
+}
+
+.logo{
+  font-size: 2em;
+  color: #3f3844
+}
+
+.task-container{
+  width: 90%;
+  background: #fff;
+  border: 1px solid #edf2f7;
+  padding: 20px;
+}
+
+.task-add-form{
+  display: flex;
+}
+
+.task-add-form input{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #edf2f7;
+  outline: none;
+}
+
+.show-task-container{
+  margin-top: 20px;
+}
+
+.task{
+  display: flex;
+  height: 40px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.task span{
+  width: 90%;
+  align-self: center;
+  color: #3f3844;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.fa-trash{
+  color: red;
+  font-size: 125%;
+  cursor: pointer;
+}
+
+.show-completed-task-toggler{
+  display: flex;
+  height: 40px;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.show-completed-task-toggler:hover{
+  font-size: 110%;
+}
+
+.show-completed{
+  font-size: 80%;
+  width: 93%;
+}
+
+.fa-chevron-down{
+  font-size: 80%;
+}
+
+.fa-chevron-up{
+  font-size: 80%;
+}
+

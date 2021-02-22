@@ -1,15 +1,30 @@
 const { pool } = require('../util/database')
 
-const getTodosFromDb = async () => {
+const getTodosFromDb = async userId => {
   try {
-    const { rows } = await pool.query('SELECT * FROM todo ORDER BY id ASC')
+    const { rows } = await pool.query(
+      'SELECT * FROM todo WHERE user_id = $1 AND todo.completed = false ORDER BY id ASC',
+      [userId]
+    )
     return { todos: rows, error: false }
   } catch (e) {
     return { error: e }
   }
 }
 
-const createTodoInDb = async task => {
+const getCompletedTodosFromDb = async userId => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM todo WHERE user_id = $1 AND todo.completed = true ORDER BY id ASC',
+      [userId]
+    )
+    return { todos: rows, error: false }
+  } catch (e) {
+    return { error: e }
+  }
+}
+
+const createTodoInDb = async (task, userId) => {
   try {
     const { rows } = await pool.query(
       `INSERT INTO todo (task,completed,user_id) VALUES ($1,false,$2) RETURNING *`,
@@ -25,7 +40,7 @@ const updateTodoInDb = async (completed, id) => {
   try {
     const { rows } = await pool.query(
       `UPDATE todo SET completed = $1 WHERE id = $2 RETURNING *`,
-      [completd, id]
+      [completed, id]
     )
     return { updatedTodo: rows, error: false }
   } catch (e) {
@@ -47,6 +62,7 @@ const deleteTodoInDb = async todoId => {
 
 module.exports = {
   getTodosFromDb,
+  getCompletedTodosFromDb,
   createTodoInDb,
   updateTodoInDb,
   deleteTodoInDb
